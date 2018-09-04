@@ -2,6 +2,8 @@
 Primeiro projeto do curso de Desenvolvedor Full Stack da Audacity.
 Este projeto permite gerar um site estático de trailer de filmes usando python.
 
+[Veja o site no ar](https://giordanna.github.io/Movie-Trailers/fresh_tomatoes.html)
+
 ### Como instalar
 - Clone ou baixe este repositório;
 - Certifique-se de que possui a API de filmes tmdbsimple instalada, execute em seu terminal:
