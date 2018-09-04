@@ -21,7 +21,12 @@ Você vai precisar de uma chave da API do The Movie Database. Para obter a chave
 1) [Registre-se](https://www.themoviedb.org/account/signup) no site;
 2) [Faça login](https://www.themoviedb.org/login) na sua conta;
 3) Selecione a seção API no canto esquerdo em "Configurações" da sua conta;
-4) Clique no link para gerar a chave e siga as instruções.
+4) Clique no link para gerar a chave e siga as instruções;
+5) Ao obter a chave, vá em entretainment_center.py e substitua CHAVE_API por sua chave:
+
+```python
+tmdb.API_KEY = 'CHAVE_API'
+```
 
 ### Como modificar os filmes
 - Abra o arquivo entretainment_center.py no seu editor de preferência e modifique:
