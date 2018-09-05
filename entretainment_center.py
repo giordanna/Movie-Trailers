@@ -34,7 +34,9 @@ for m in movies.results:
     movies_array.append(
             media.Movie(
                     m['title'],
-                    m['overview'],
+                    # evita que o texto escape em  movie-overview=""
+                    # por conta das aspas
+                    m['overview'].replace('"', "'"),
                     poster_url,
                     trailer_url
                     )

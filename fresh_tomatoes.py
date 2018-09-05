@@ -14,10 +14,14 @@ main_page_head = '''
     <title>Movie Trailers</title>
 
     <!-- Bootstrap 3 -->
-    <link rel="stylesheet" href="https://bootswatch.com/3/slate/bootstrap.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href=
+"https://bootswatch.com/3/slate/bootstrap.min.css">
+<link rel="stylesheet" href=
+"https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+<script src=
+"https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src=
+"https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
@@ -61,24 +65,28 @@ main_page_head = '''
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
-        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-            // Remove the src so the player itself gets removed, as this is the only
-            // reliable way to ensure the video stops playing in IE
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal',
+        function (event) {
+            // Remove the src so the player itself gets removed, as this is
+            // the only reliable way to ensure the video stops playing in IE
             $("#trailer-video-container").empty();
         });
         // Start playing the video whenever the trailer modal is opened
         $(document).on('click', '.movie-tile', function (event) {
             var trailerYouTubeId = $(this).attr('data-trailer-youtube-id');
             var movieOverviewText = $(this).attr('movie-overview');
-            var sourceUrl = 'https://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
-            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+            var sourceUrl = 'https://www.youtube.com/embed/' +
+            trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append(
+            $("<iframe></iframe>", {
               'id': 'trailer-video',
               'type': 'text-html',
               'src': sourceUrl,
               'frameborder': 0
             }));
             // modifica o texto do storyline
-            $("#movie-overview-text").empty().append("<p align='justify'>" + movieOverviewText + "</p>");
+            $("#movie-overview-text").empty().append("<p align='justify'>" +
+            movieOverviewText + "</p>");
         });
         // Animate in the movies when the page loads
         $(document).ready(function () {
@@ -98,8 +106,10 @@ main_page_content = '''
     <div class="modal" id="trailer">
       <div class="modal-dialog">
         <div class="modal-content">
-          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          <a href="#" class="hanging-close" data-dismiss=
+          "modal" aria-hidden="true">
+<img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi''' + '''
+_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
           </a>
           <div class="scale-media" id="trailer-video-container">
           </div>
@@ -134,7 +144,9 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" movie-overview="{movie_overview}" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-6 col-lg-4 movie-tile text-center" movie-overview=
+"{movie_overview}" data-trailer-youtube-id=
+"{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h5>{movie_title}</h5>
 </div>
