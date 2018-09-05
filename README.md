@@ -15,6 +15,7 @@ pip install tmdbsimple
 python entretainment_center.py
 ```
 - Aguarde até que o arquivo fresh_tomatoes.html seja gerado. Ele será aberto automaticamente em seu navegador.
+
 **OBS:** certifique-se de que possui o python instalado.
 
 ### Chave da API
@@ -39,3 +40,6 @@ response = movies.now_playing()
 
 ### TODOs
  - Refazer o layout do site do zero
+ 
+### Dúvidas
+ - Caso há alguma dúvida em relação a este repositório, envie para gior.grs@gmail.com
