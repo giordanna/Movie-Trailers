@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import webbrowser
 import os
 import re
+import time
 
 
 # Styles and scripting for the page
@@ -66,14 +68,17 @@ main_page_head = '''
         });
         // Start playing the video whenever the trailer modal is opened
         $(document).on('click', '.movie-tile', function (event) {
-            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
-            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id');
+            var movieOverviewText = $(this).attr('movie-overview');
+            var sourceUrl = 'https://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
             $("#trailer-video-container").empty().append($("<iframe></iframe>", {
               'id': 'trailer-video',
               'type': 'text-html',
               'src': sourceUrl,
               'frameborder': 0
             }));
+            // modifica o texto do storyline
+            $("#movie-overview-text").empty().append("<p align='justify'>" + movieOverviewText + "</p>");
         });
         // Animate in the movies when the page loads
         $(document).ready(function () {
@@ -98,6 +103,10 @@ main_page_content = '''
           </a>
           <div class="scale-media" id="trailer-video-container">
           </div>
+          <div style="padding:1em">
+              <h4>Overview:</h4>
+              <div id="movie-overview-text"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -112,6 +121,9 @@ main_page_content = '''
         </div>
       </div>
     </div>
+    <div class="container" align="right">
+        Movies checked on ''' + time.ctime() + '''
+    </div>
     <div class="container">
       {movie_tiles}
     </div>
@@ -122,7 +134,7 @@ main_page_content = '''
 
 # A single movie entry html template
 movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-6 col-lg-4 movie-tile text-center" movie-overview="{movie_overview}" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h5>{movie_title}</h5>
 </div>
@@ -144,6 +156,9 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
+            # https://stackoverflow.com/questions/9942594/unicodeencodeerror-ascii-codec-cant-encode-character-u-xa0-in-position-20
+            # o que me auxiliou para resolver um problema de codificação
+            movie_overview=movie.storyline.encode('utf-8'),
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
         )

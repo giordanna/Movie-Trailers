@@ -13,8 +13,8 @@ movies_array = []
 
 for m in movies.results:
 
-    print("Gerando entrada de filme para '" + m['title'] + "' em "
-          + time.ctime())
+    print("Gerando entrada de filme para '" + m['title'] + "' em " +
+          time.ctime())
 
     # constrói o link para o poster do filme
     poster_url = 'https://image.tmdb.org/t/p/original' + m['poster_path']
@@ -40,7 +40,7 @@ for m in movies.results:
                     )
             )
 
-print("\nGeração da página concluída em " + time.ctime() + "!" )
+print("\nGeração da página concluída em " + time.ctime() + "!")
 
 # cria a página com a lista de filmes como entrada
 fresh_tomatoes.open_movies_page(movies_array)
