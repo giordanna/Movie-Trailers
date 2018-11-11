@@ -1,5 +1,5 @@
 # Site de trailer de filmes
-Primeiro projeto do curso de Desenvolvedor Full Stack da Audacity.
+Primeiro projeto do curso de Desenvolvedor Full Stack da Udacity.
 Este projeto permite gerar um site estático de trailer de filmes usando python.
 
 [Veja o site no ar](https://giordanna.github.io/Movie-Trailers/fresh_tomatoes.html)
